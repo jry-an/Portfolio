@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import "antd/dist/antd.css";
 import {
   Layout,
@@ -8,7 +8,7 @@ import {
   Col,
   Row,
   List,
-  Divider,
+  Button,
 } from "antd";
 import {
   FaMapMarkerAlt,
@@ -16,6 +16,7 @@ import {
   FaGraduationCap,
   FaReact,
 } from "react-icons/fa";
+import { ArrowDownOutlined } from "@ant-design/icons";
 import { SocialIcon } from "react-social-icons";
 import profilePic from "./profile.jpg";
 import Background from "./codeback.jpg";
@@ -55,8 +56,17 @@ const project = [
   "In Progress: Splyce",
 ];
 
-export default class App extends Component {
-  render() {
+
+
+export default function App() {
+  const [buttonClicked, setButtonClicked] = useState(false);
+
+  function scrollDown(){
+    setButtonClicked(true);
+    var elmnt = document.getElementById("scroll-down");
+    elmnt.scrollIntoView();
+    }
+
     return (
       <Layout>
         <Content style={{ height: "100%"}}>
@@ -123,13 +133,12 @@ export default class App extends Component {
             />
           </div>
           <br />
-          <Divider />
           <br />
          
           <Row justify="space-around">
             <Col span={6}>
               <Card hoverable 
-              cover={<ToolSvg style={{ marginTop: "20px", height: "12vh"}}/>}
+              cover={<ToolSvg style={{ margin: "20px 0px 20px 0px", height: "12vh"}}/>}
               >
                 <Meta title="Europe Street beat" />
               </Card>
@@ -137,7 +146,7 @@ export default class App extends Component {
 
             <Col span={6}>
               <Card hoverable 
-              cover={<CodeSvg style={{ marginTop: "20px", height: "12vh"}}/>}
+              cover={<CodeSvg style={{ margin: "20px 0px 20px 0px", height: "12vh"}}/>}
               >
                 <Meta title="Code" />
               </Card>
@@ -145,17 +154,20 @@ export default class App extends Component {
 
             <Col span={6}>
               <Card hoverable 
-              cover={<ProjectIcon style={{ marginTop: "20px", height: "12vh"}}/>}
+              cover={<ProjectIcon style={{ margin: "20px 0px 20px 0px", height: "12vh"}}/>}
               >
                 <Meta title="Projects" />
               </Card>
             </Col>
           </Row>
 
-          <br />
-          <Divider />
-          <br />
+          <div class="scroll-down-button" style={{margin: "15vh", display: "flex", justifyContent: "center" }}>
+           <Button size="large" onClick={() => scrollDown()} type="primary" icon={<ArrowDownOutlined />}  />
+          </div>
 
+
+          <div id="scroll-down">
+          <React.Fragment>
           <div className="site-card-wrapper">
             <Row justify="space-around">
               <Col span={7}>
@@ -187,8 +199,8 @@ export default class App extends Component {
 
           <br />
           <br />
-        </Content>
-        <Footer
+
+          <Footer
           style={{
             display: "flex",
             justifyContent: "center",
@@ -204,7 +216,11 @@ export default class App extends Component {
             + <a href={"https://ant.design/"}> ant.design</a>{" "}
           </p>{" "}
         </Footer>
+        </React.Fragment>
+        </div>
+
+        </Content>
+       
       </Layout>
     );
-  }
 }
