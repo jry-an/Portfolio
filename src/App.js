@@ -140,7 +140,7 @@ export default function App() {
               <Card hoverable 
               cover={<ToolSvg style={{ margin: "20px 0px 20px 0px", height: "12vh"}}/>}
               >
-                <Meta title="Europe Street beat" />
+                <Meta style={{alignItems: "center"}}title="Problem Solver" />
               </Card>
             </Col>
 
@@ -162,7 +162,7 @@ export default function App() {
           </Row>
 
           <div class="scroll-down-button" style={{margin: "15vh", display: "flex", justifyContent: "center" }}>
-           <Button size="large" onClick={() => scrollDown()} type="primary" icon={<ArrowDownOutlined />}  />
+             <Button size="large" onClick={() => scrollDown()} type="primary" icon={<ArrowDownOutlined />}  />
           </div>
 
 
